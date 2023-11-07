@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-oidc-provider-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-oidc-provider
+  template:
+    metadata:
+      labels:
+        app: node-oidc-provider
+    spec:
+      containers:
+      - name: node-oidc-provider
+        image: paulonunesgft/node-oidc-provider:test
+        ports:
+        - containerPort: 3000
